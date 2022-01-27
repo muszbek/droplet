@@ -1,0 +1,20 @@
+version: '3.4'
+services:
+
+  couchdb:
+    container_name: couchdb
+    image: couchdb:3.2.1
+    hostname: couchdb
+    ports:
+      - "5984:5984"
+    networks:
+      - droplet_network
+    volumes:
+      - ./couchdb/data/data:/opt/couchdb/data
+    env_file:
+      - ./couchdb/couchdb.env
+
+
+networks:
+  droplet_network:
+    

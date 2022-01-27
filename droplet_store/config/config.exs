@@ -7,9 +7,6 @@
 # General application configuration
 import Config
 
-config :droplet_store,
-  ecto_repos: [DropletStore.Repo]
-
 # Configures the endpoint
 config :droplet_store, DropletStoreWeb.Endpoint,
   url: [host: "localhost"],

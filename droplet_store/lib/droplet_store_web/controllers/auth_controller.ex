@@ -7,8 +7,8 @@ defmodule DropletStoreWeb.AuthController do
   alias DropletStore.Users
   require Logger
 
-  def request(conn, _params) do
-    render(conn, "request.html", callback_url: Helpers.callback_url(conn))
+  def login(conn, _params) do
+    render(conn, "login.html", callback_url: Helpers.callback_url(conn))
   end
 
   def delete(conn, _params) do

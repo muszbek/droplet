@@ -1,3 +1,5 @@
 - unit test framework for nosql couchdb (no ecto)
 ...
-OAUTH2
+- mock OAUTH2
+- unit test for oauth2
+- retrieve user from db

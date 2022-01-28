@@ -23,6 +23,7 @@ defmodule DropletStoreWeb.Router do
   scope "/auth", DropletStoreWeb do
     pipe_through :browser
 
+    get "/login", AuthController, :login
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
     post "/:provider/callback", AuthController, :callback

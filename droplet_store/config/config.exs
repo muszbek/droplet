@@ -14,6 +14,16 @@ config :droplet_store, DropletStoreWeb.Endpoint,
   pubsub_server: DropletStore.PubSub,
   live_view: [signing_salt: "/64zW/K/"]
 
+# Configures OAUTH2
+config :ueberauth, Ueberauth,
+  providers: [
+    google: {Ueberauth.Strategy.Google, []}
+  ]
+
+config :ueberauth, Ueberauth.Strategy.Google.OAuth,
+  client_id: "dummy",
+  client_secret: "dummy"
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

@@ -84,11 +84,11 @@ long term: the to-go platform to find items during shortages
 - everything clustered (postfix + haproxy not so much for load, just redundancy)
 
 ## data type
-- seller users
+- seller users - primary key email (multiple login modes that don't know about each other)
 -- access rights: admin (me), owner (manage subscription and publishers), publisher
 -- publishers always belong to an owner
 -- publishers will be implemented later
-- stores
+- stores - primary key integer uid
 -- many store can belongs to one owner
 -- publishers need to access store reference (via owner reference)
 

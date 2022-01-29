@@ -20,4 +20,8 @@ if ! curl -s -f -o /dev/null $DB_ADDRESS/droplet; then
     curl -X PUT -s -o /dev/null $DB_ADDRESS/droplet
 fi
 
+source ../oauth2/google.secret
+export GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+export GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
+
 exec mix phx.server

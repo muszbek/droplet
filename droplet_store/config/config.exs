@@ -21,8 +21,8 @@ config :ueberauth, Ueberauth,
   ]
 
 config :ueberauth, Ueberauth.Strategy.Google.OAuth,
-  client_id: "dummy",
-  client_secret: "dummy"
+  client_id: System.get_env("GOOGLE_CLIENT_ID", "dummy_id"),
+  client_secret: System.get_env("GOOGLE_CLIENT_SECRET", "dummy_secret")
 
 # Configures the mailer
 #

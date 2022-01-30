@@ -1,0 +1,8 @@
+<.form let={_} for={@conn} action={@action}>
+  <input type="text" id="address" name="store[address]" placeholder="Search your store address">
+  <input type="text" id="google_id" name="store[google_id]" placeholder="Google Maps place ID">
+
+  <div>
+    <%= submit "Register" , id: "register" %>
+  </div>
+</.form>

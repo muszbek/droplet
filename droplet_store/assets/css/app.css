@@ -118,3 +118,9 @@
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+/* Additional styles */
+#map {
+    height: 400px;
+    width: 100%;
+}

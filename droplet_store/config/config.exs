@@ -24,6 +24,10 @@ config :ueberauth, Ueberauth.Strategy.Google.OAuth,
   client_id: System.get_env("GOOGLE_CLIENT_ID", "dummy_id"),
   client_secret: System.get_env("GOOGLE_CLIENT_SECRET", "dummy_secret")
 
+# Configures Google Maps API
+config :droplet_store, :google_maps,
+  api_key: System.get_env("GOOGLE_API_KEY", "dummy_key")
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

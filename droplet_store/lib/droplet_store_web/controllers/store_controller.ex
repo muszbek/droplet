@@ -3,6 +3,7 @@ defmodule DropletStoreWeb.StoreController do
 
   alias DropletStore.Stores
   alias DropletStore.Stores.Store
+  require Logger
 
   def index(conn, _params) do
     stores = Stores.list_stores()
@@ -10,7 +11,7 @@ defmodule DropletStoreWeb.StoreController do
   end
 
   def new(conn, _params) do
-    render(conn, "new.html")
+    render(conn, "new.html", google_api_source: google_api_source())
   end
 
   def create(conn, %{"store" => store_params}) do
@@ -54,4 +55,10 @@ defmodule DropletStoreWeb.StoreController do
     |> put_flash(:info, "Store deleted successfully.")
     |> redirect(to: Routes.store_path(conn, :index))
   end
+
+  defp google_api_source(),
+    do: "https://maps.googleapis.com/maps/api/js?key=" <> get_api_key() <> "&callback=initMap"
+  
+  defp get_api_key(),
+    do: Application.get_env(:droplet_store, :google_maps)[:api_key]
 end

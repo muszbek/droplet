@@ -2,7 +2,13 @@
   <input type="text" id="address" name="store[address]" placeholder="Search your store address">
   <input type="text" id="google_id" name="store[google_id]" placeholder="Google Maps place ID">
 
+  <div id="map"></div>
+  
   <div>
     <%= submit "Register" , id: "register" %>
   </div>
+
+  <script async
+	  src={@google_api_source}>
+  </script>
 </.form>

@@ -18,6 +18,7 @@ import "../css/app.css"
 //
 //     import "some-package"
 //
+import "./reg_store.js"
 
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
@@ -42,5 +43,3 @@ liveSocket.connect()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
-
-import "./reg_store.js"

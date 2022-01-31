@@ -19,14 +19,14 @@ defmodule DropletStoreWeb.AuthController do
   end
 
   def callback(%{assigns: %{ueberauth_failure: fails}} = conn, _params) do
-    Logger.warn(inspect(fails, pretty: true))
+    Logger.debug(inspect(fails, pretty: true))
     conn
     |> put_flash(:error, "Failed to authenticate.")
     |> redirect(to: "/")
   end
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    Logger.warn(inspect(auth, pretty: true))
+    Logger.debug(inspect(auth, pretty: true))
     user = Users.email_from_auth(auth)
     
     conn

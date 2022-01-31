@@ -24,4 +24,7 @@ source ../oauth2/google.secret
 export GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 export GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
 
+source ../google_maps/api_key.secret
+export GOOGLE_API_KEY=$GOOGLE_API_KEY
+
 exec mix phx.server

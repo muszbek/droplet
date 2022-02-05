@@ -56,9 +56,13 @@ defmodule DropletStoreWeb.StoreController do
     |> redirect(to: Routes.store_path(conn, :index))
   end
 
-  defp google_api_source(),
-    do: "https://maps.googleapis.com/maps/api/js?key=" <> get_api_key() <> "&callback=initMap"
+  defp google_api_source() do
+    "https://maps.googleapis.com/maps/api/js?key=" <>
+      get_api_key() <>
+      "&callback=initMap&libraries=places"
+  end
   
-  defp get_api_key(),
-    do: Application.get_env(:droplet_store, :google_maps)[:api_key]
+  defp get_api_key() do
+    Application.get_env(:droplet_store, :google_maps)[:api_key]
+  end
 end

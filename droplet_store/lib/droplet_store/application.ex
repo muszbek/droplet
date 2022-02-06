@@ -8,8 +8,8 @@ defmodule DropletStore.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the database repository
-      DropletStore.Repo.get_process(),
+      # Start the Ecto repository
+      DropletStore.Repo,
       # Start the Telemetry supervisor
       DropletStoreWeb.Telemetry,
       # Start the PubSub system

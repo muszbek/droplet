@@ -1,24 +1,20 @@
 #!/bin/bash
 
-source ../couchdb/couchdb.env
-# Wait until CouchDB is ready
-while ! curl --silent --fail -o /dev/null $COUCHDB_HOST:5984/
+source ../postgres/postgres.env
+export POSTGRESQL_PASSWORD=$POSTGRESQL_PASSWORD
+export POSTGRESQL_USERNAME=$POSTGRESQL_USERNAME
+export POSTGRESQL_DATABASE=$POSTGRESQL_DATABASE
+export POSTGRESQL_HOST=$POSTGRESQL_HOST
+
+# Wait until Postgres is ready
+while ! pg_isready -q -h $POSTGRESQL_HOST -p 5432 -U $POSTGRESQL_USERNAME
 do
     echo "$(date) - waiting for database to start..."
     sleep 2
 done
 
-DB_ADDRESS=http://$COUCHDB_USER:$COUCHDB_PASSWORD@$COUCHDB_HOST:5984
-
-if ! curl -s -f -o /dev/null $DB_ADDRESS/_users; then
-    echo "$(date) - adding _users database..."
-    curl -X PUT -s -o /dev/null $DB_ADDRESS/_users
-fi
-
-if ! curl -s -f -o /dev/null $DB_ADDRESS/droplet; then
-    echo "$(date) - adding droplet database..."
-    curl -X PUT -s -o /dev/null $DB_ADDRESS/droplet
-fi
+mix ecto.migrate
+mix run priv/repo/seeds.exs
 
 source ../oauth2/google.secret
 export GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID

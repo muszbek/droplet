@@ -1,18 +1,17 @@
 version: '3.4'
 services:
 
-  couchdb:
-    container_name: couchdb
-    image: couchdb:3.2.1
-    hostname: couchdb
+  postgres:
+    container_name: droplet_postgres
+    image: bitnami/postgresql:13
     ports:
-      - "5984:5984"
+      - "5432:5432"
     networks:
       - droplet_network
     volumes:
-      - ./couchdb/data/data:/opt/couchdb/data
+      - ./postgres/data:/bitnami/postgresql
     env_file:
-      - ./couchdb/couchdb.env
+      - ./postgres/postgres.env
 
 
 networks:

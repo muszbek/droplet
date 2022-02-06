@@ -1,11 +1,13 @@
 import Config
 
 # Configure your database
-config :droplet_store, CouchDBEx,
-  hostname: "localhost",
+config :droplet_store, DropletStore.Repo,
   username: "droplet",
   password: "droplet",
-  auth_method: :cookie
+  hostname: "localhost",
+  database: "droplet",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -20,7 +22,7 @@ config :droplet_store, DropletStoreWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "2r3v6e2dL705+MFn0G/a8VzRti/Qf0IRpiM9UbWgDsd0sMgZLfkCi1tilpTlOyAW",
+  secret_key_base: "m2Amm/O1gZNkSesP+67biHIhO6/PXR+LyEowezxVf7lkVLm/dOR4rSdc6teBMAzZ",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}

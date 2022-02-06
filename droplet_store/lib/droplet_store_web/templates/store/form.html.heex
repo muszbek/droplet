@@ -1,6 +1,7 @@
 <.form let={_} for={@conn} action={@action}>
+  <label for="address">Find your store on the map:</label>
   <input type="text" id="address" name="store[address]" placeholder="Search your store address">
-  <input type="text" id="google_id" name="store[google_id]" placeholder="Google Maps place ID" disabled>
+  <input type="text" id="google_id" name="store[google_id]" placeholder="Google Maps place ID" readonly>
 
   <div id="map"></div>
   

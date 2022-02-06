@@ -7,7 +7,7 @@ defmodule DropletStoreWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_droplet_store_key",
-    signing_salt: "SCarnXFs"
+    signing_salt: "WrrXLuqp"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]

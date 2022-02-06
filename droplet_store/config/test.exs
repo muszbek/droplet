@@ -5,17 +5,19 @@ import Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :droplet_store, CouchDBEx,
-  hostname: "localhost",
+config :droplet_store, DropletStore.Repo,
   username: "droplet",
   password: "droplet",
-  auth_method: :cookie
+  hostname: "localhost",
+  database: "droplet_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :droplet_store, DropletStoreWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "RKHmgG5ub/IBU5ToEeoErziOpPa00XOyvWNvvaqo3tqliUZobZoz6azfuSJhKleh",
+  secret_key_base: "EXDHmDr3hFy6X1YVQjGcNgF/0pY3eE1tGAxP0KyDSGq90+Acq3pr/DMypEyQqzTN",
   server: false
 
 # In test we don't send emails.

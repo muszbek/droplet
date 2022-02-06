@@ -7,12 +7,15 @@
 # General application configuration
 import Config
 
+config :droplet_store,
+  ecto_repos: [DropletStore.Repo]
+
 # Configures the endpoint
 config :droplet_store, DropletStoreWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: DropletStoreWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: DropletStore.PubSub,
-  live_view: [signing_salt: "/64zW/K/"]
+  live_view: [signing_salt: "/nPlF7Sk"]
 
 # Configures OAUTH2
 config :ueberauth, Ueberauth,

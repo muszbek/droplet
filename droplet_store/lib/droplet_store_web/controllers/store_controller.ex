@@ -11,7 +11,8 @@ defmodule DropletStoreWeb.StoreController do
 
   def new(conn, _params) do
     changeset = Subscriptions.change_store(%Store{})
-    render(conn, "new.html", changeset: changeset, google_api_source: google_api_source())
+    render(conn, "new.html", changeset: changeset,
+      google_api_source: google_api_source())
   end
 
   def create(conn, %{"store" => store_params}) do
@@ -34,7 +35,8 @@ defmodule DropletStoreWeb.StoreController do
   def edit(conn, %{"id" => id}) do
     store = Subscriptions.get_store!(id)
     changeset = Subscriptions.change_store(store)
-    render(conn, "edit.html", store: store, changeset: changeset)
+    render(conn, "edit.html", store: store, changeset: changeset,
+      google_api_source: google_api_source())
   end
 
   def update(conn, %{"id" => id, "store" => store_params}) do

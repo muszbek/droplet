@@ -33,7 +33,7 @@ function initLocation(map) {
 function initSearch(map) {
     const foundZoom = 17;
     
-    const input = document.getElementById("address");
+    const input = document.getElementById("store_address");
     const searchBox = new google.maps.places.SearchBox(input);
 
     var marker;
@@ -54,6 +54,6 @@ function initSearch(map) {
 	map.setCenter(pos);
 	map.setZoom(foundZoom);
 
-	document.getElementById("google_id").value = place.place_id;
+	document.getElementById("store_google_id").value = place.place_id;
     });
 }

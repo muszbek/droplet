@@ -1,7 +1,10 @@
-<.form let={_} for={@conn} action={@action}>
+<.form let={f} for={@changeset} action={@action}>
   <label for="address">Find your store on the map:</label>
-  <input type="text" id="address" name="store[address]" placeholder="Search your store address">
-  <input type="text" id="google_id" name="store[google_id]" placeholder="Google Maps place ID" readonly>
+  <%= text_input f, :address, placeholder: "Search your store address" %>
+  <%= error_tag f, :address %>
+
+  <%= text_input f, :google_id, placeholder: "Google Maps place ID", readonly: true %>
+  <%= error_tag f, :google_id %>
 
   <div id="map"></div>
   

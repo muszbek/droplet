@@ -11,8 +11,7 @@ defmodule DropletStoreWeb.StoreController do
 
   def new(conn, _params) do
     changeset = Subscriptions.change_store(%Store{})
-    render(conn, "new.html", changeset: changeset,
-      google_api_source: google_api_source())
+    render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"store" => store_params}) do
@@ -35,8 +34,7 @@ defmodule DropletStoreWeb.StoreController do
   def edit(conn, %{"id" => id}) do
     store = Subscriptions.get_store!(id)
     changeset = Subscriptions.change_store(store)
-    render(conn, "edit.html", store: store, changeset: changeset,
-      google_api_source: google_api_source())
+    render(conn, "edit.html", store: store, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "store" => store_params}) do
@@ -60,16 +58,5 @@ defmodule DropletStoreWeb.StoreController do
     conn
     |> put_flash(:info, "Store deleted successfully.")
     |> redirect(to: Routes.store_path(conn, :index))
-  end
-  
-  
-  defp google_api_source() do
-    "https://maps.googleapis.com/maps/api/js?key=" <>
-      get_api_key() <>
-      "&callback=initMap&libraries=places"
-  end
-  
-  defp get_api_key() do
-    Application.get_env(:droplet_store, :google_maps)[:api_key]
   end
 end

@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :droplet_store, DropletStore.Repo,
-  username: "droplet",
-  password: "droplet",
-  hostname: "localhost",
-  database: "droplet",
+  username: System.get_env("POSTGRESQL_USERNAME", "droplet"),
+  password: System.get_env("POSTGRESQL_PASSWORD", "droplet"),
+  hostname: System.get_env("POSTGRESQL_HOST", "localhost"),
+  database: System.get_env("POSTGRESQL_DATABASE", "droplet"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

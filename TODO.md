@@ -1,9 +1,11 @@
+- adjust home page redirection for new auth logic
+- adapt OATH2 for new auth logic
 - mock OAUTH2
 - unit test for oauth2
 
 
 - retrieve user from db
-- create subscription for store
+- create user with many-to-many with store
 
 - initMap not loading fast enough error (not a function) on javascript
 

@@ -4,12 +4,4 @@ defmodule DropletStoreWeb.PageController do
   def index(conn, _params) do
     render(conn, "index.html")
   end
-  
-  def index(conn, _params) do
-    case get_session(conn, :current_user) do
-      nil -> redirect(conn, to: Routes.auth_path(conn, :login))
-      user -> render(conn, "index.html", current_user: user)
-    end
-  end
-
 end

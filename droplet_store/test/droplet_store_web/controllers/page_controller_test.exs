@@ -1,17 +1,21 @@
 defmodule DropletStoreWeb.PageControllerTest do
   use DropletStoreWeb.ConnCase
 
-  @test_email "some_email"
+  describe "logged in" do
+    setup :register_and_log_in_user
+    
+    test "GET /", %{conn: conn} do
+      conn = get(conn, "/")
+      assert html_response(conn, 200) =~ "Welcome to Droplet!"
+    end
+  end
   
-  test "GET /", %{conn: conn} do
-    conn = get(conn, "/")
-    assert redirected_to(conn) == Routes.auth_path(conn, :login)
+  describe "logged out" do
+    test "GET /", %{conn: conn} do
+      conn = get(conn, "/")
+      assert redirected_to(conn) == Routes.user_session_path(conn, :new)
+    end
   end
 
-  test "GET / logged in", %{conn: conn} do
-    conn = conn
-    |> Plug.Test.init_test_session(current_user: @test_email)
-    |> get("/")
-    assert html_response(conn, 200) =~ "Welcome to Droplet!"
-  end
+  
 end

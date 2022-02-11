@@ -1,4 +1,3 @@
-- adjust home page redirection for new auth logic
 - adapt OATH2 for new auth logic
 - mock OAUTH2
 - unit test for oauth2

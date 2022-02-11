@@ -7,7 +7,9 @@ defmodule DropletStoreWeb.StoreControllerTest do
   @update_attrs %{address: "some updated address", google_id: "some updated google_id"}
   @invalid_attrs %{address: nil, google_id: nil}
 
-  describe "index" do
+  setup :register_and_log_in_user
+  
+  describe "index" do    
     test "lists all stores", %{conn: conn} do
       conn = get(conn, Routes.store_path(conn, :index))
       assert html_response(conn, 200) =~ "Listing Stores"

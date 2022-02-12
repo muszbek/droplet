@@ -1,4 +1,4 @@
-- adapt OATH2 for new auth logic
+- adapt OATH2 for new auth logic - later, not priority
 - mock OAUTH2
 - unit test for oauth2
 

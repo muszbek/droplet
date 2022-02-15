@@ -4,8 +4,10 @@
 
 
 - retrieve user from db
-- create user with many-to-many with store
 
 - initMap not loading fast enough error (not a function) on javascript
 
 - store form javascript when edit address create a marker on original address
+
+
+- finish fully the tests for users and stores

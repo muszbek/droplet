@@ -8,7 +8,18 @@ defmodule DropletStore.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
 
+    many_to_many :stores, DropletStore.Subscriptions.Store,
+      join_through: DropletStore.Subscriptions.UserStore
+
     timestamps()
+  end
+
+  @doc """
+  For being able to cast in relations of another context.
+  """
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:email, :password, :hashed_password, :confirmed_at])
   end
 
   @doc """

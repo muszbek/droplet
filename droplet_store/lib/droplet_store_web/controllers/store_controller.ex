@@ -15,7 +15,9 @@ defmodule DropletStoreWeb.StoreController do
   end
 
   def create(conn, %{"store" => store_params}) do
-    case Subscriptions.create_store(store_params) do
+    owner = conn.assigns[:current_user]
+    
+    case Subscriptions.create_store_with_owner(store_params, owner) do
       {:ok, store} ->
         conn
         |> put_flash(:info, "Store created successfully.")

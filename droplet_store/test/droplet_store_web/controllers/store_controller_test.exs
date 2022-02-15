@@ -79,8 +79,14 @@ defmodule DropletStoreWeb.StoreControllerTest do
     end
   end
 
-  defp create_store(_) do
-    store = store_fixture()
+  defp create_store(%{conn: conn}) do
+    conn = conn
+    |> Plug.Conn.fetch_session()
+    |> DropletStoreWeb.UserAuth.fetch_current_user(:no_opts)
+    
+    user = conn.assigns[:current_user]
+    
+    store = store_fixture_with_owner(user)
     %{store: store}
   end
 end

@@ -6,6 +6,9 @@ defmodule DropletStore.Subscriptions.Store do
     field :address, :string
     field :google_id, :string
 
+    many_to_many :users, DropletStore.Accounts.User,
+      join_through: DropletStore.Subscriptions.UserStore
+
     timestamps()
   end
 

@@ -55,6 +55,20 @@ defmodule DropletStore.Subscriptions do
     |> Repo.insert()
   end
 
+  def create_store_with_owner(attrs, owner) do
+    case create_store(attrs) do
+      {:ok, %Store{} = store} ->
+	user_store_attrs = %{store_id: store.id, user_id: owner.id}
+	
+	%DropletStore.Subscriptions.UserStore{}
+	|> DropletStore.Subscriptions.UserStore.changeset(user_store_attrs)
+	|> Repo.insert()
+	
+	{:ok, store}
+      error -> error
+    end
+  end
+
   @doc """
   Updates a store.
 

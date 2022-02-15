@@ -4,6 +4,7 @@ defmodule DropletStoreWeb.UserAuth do
 
   alias DropletStore.Accounts
   alias DropletStoreWeb.Router.Helpers, as: Routes
+  require Logger
 
   # Make the remember me cookie valid for 60 days.
   # If you want bump or reduce this value, also change

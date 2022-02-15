@@ -10,4 +10,4 @@
 - store form javascript when edit address create a marker on original address
 
 
-- finish fully the tests for users and stores
+- finish fully the tests for users and stores - controller

@@ -6,7 +6,7 @@ defmodule DropletStore.Subscriptions do
   import Ecto.Query, warn: false
   alias DropletStore.Repo
 
-  alias DropletStore.Subscriptions.Store
+  alias DropletStore.Subscriptions.{Store, UserStore}
 
   @doc """
   Returns the list of stores.
@@ -36,6 +36,15 @@ defmodule DropletStore.Subscriptions do
 
   """
   def get_store!(id), do: Repo.get!(Store, id)
+
+  def get_store_owner(id) do
+    user_store = UserStore
+    |> where(store_id: ^id)
+    |> where(relation: "owner")
+    |> Repo.one!()
+
+    DropletStore.Accounts.get_user!(user_store.user_id)
+  end
 
   @doc """
   Creates a store.

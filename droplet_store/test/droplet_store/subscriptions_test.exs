@@ -20,6 +20,12 @@ defmodule DropletStore.SubscriptionsTest do
       assert Subscriptions.get_store!(store.id) == store
     end
 
+    test "get_user_stores/1 returns the store" do
+      owner = DropletStore.AccountsFixtures.user_fixture()
+      store = store_fixture_with_owner(owner)
+      assert Subscriptions.get_user_stores(owner.id) == [store]
+    end
+
     test "create_store/1 with valid data creates a store" do
       valid_attrs = %{address: "some address", google_id: "some google_id"}
 

@@ -46,6 +46,14 @@ defmodule DropletStore.Subscriptions do
     DropletStore.Accounts.get_user!(user_store.user_id)
   end
 
+  def get_user_stores(id) do
+    DropletStore.Accounts.User
+    |> where(id: ^id)
+    |> preload(:stores)
+    |> Repo.one!()
+    |> Map.get(:stores)
+  end
+
   @doc """
   Creates a store.
 

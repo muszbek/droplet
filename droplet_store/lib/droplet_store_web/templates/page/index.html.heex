@@ -3,6 +3,8 @@
   <p>Lorem ipsum dolor sit amet</p>
 </section>
 
-Lorem ipsum
+<h2>Your stores:</h2>
+
+<%= render DropletStoreWeb.StoreView, "list.html", assigns %>
 
 <span><%= link "Register New Store", to: Routes.store_path(@conn, :index) %></span>

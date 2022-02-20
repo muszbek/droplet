@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Google</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for store <- @stores do %>
+    <tr>
+      <td><%= store.address %></td>
+      <td><%= store.google_id %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.store_path(@conn, :show, store) %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

@@ -154,3 +154,7 @@ long term: the to-go platform to find items during shortages
 - directions to any other store
 
 12. implement publisher access right to seller API
+
+## Kafka
+topic layout:
+*stores/v1/offers/{id}/{publish|delete}/fr/lat&long*

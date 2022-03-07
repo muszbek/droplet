@@ -52,7 +52,8 @@ defmodule DropletStore.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:oauth2, "~> 2.0", override: true},
       {:ueberauth, "~> 0.6"},
-      {:ueberauth_google, "~> 0.10"}
+      {:ueberauth_google, "~> 0.10"},
+      {:kafka_ex, "~> 0.11"}
     ]
   end
 

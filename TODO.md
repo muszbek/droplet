@@ -9,7 +9,6 @@
 
 - implement Kafka streaming of store events
 
-- show store should get details of location from Google Maps API and store in session
 - location data is needed in publish offer and show self offers
 - create offer endpoint
 - list offers endpoint

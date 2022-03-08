@@ -6,7 +6,10 @@ defmodule DropletStoreWeb.StoreController do
 
   def index(conn, _params) do
     stores = Subscriptions.list_stores()
-    render(conn, "index.html", stores: stores)
+
+    conn
+    |> delete_session(:store_details)
+    |> render("index.html", stores: stores)
   end
 
   def new(conn, _params) do
@@ -30,7 +33,11 @@ defmodule DropletStoreWeb.StoreController do
 
   def show(conn, %{"id" => id}) do
     store = Subscriptions.get_store!(id)
-    render(conn, "show.html", store: store)
+    {:ok, %{"result" => store_from_google}} = GoogleMaps.place_details(store.google_id)
+    
+    conn
+    |> put_session(:store_details, compress_store_details(store_from_google))
+    |> render("show.html", store: store)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -60,5 +67,15 @@ defmodule DropletStoreWeb.StoreController do
     conn
     |> put_flash(:info, "Store deleted successfully.")
     |> redirect(to: Routes.store_path(conn, :index))
+  end
+
+
+  defp compress_store_details(store_data) do
+    %{formatted_address: store_data["formatted_address"],
+      formatted_phone_number: store_data["formatted_phone_number"],
+      location: store_data["geometry"]["location"],
+      icon: store_data["icon"],
+      name: store_data["name"],
+      opening_hours: store_data["opening_hours"]}
   end
 end

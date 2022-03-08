@@ -34,7 +34,7 @@ config :kafka_ex,
   ]
 
 # Configures Google Maps API
-config :droplet_store, :google_maps,
+config :google_maps,
   api_key: System.get_env("GOOGLE_API_KEY", "dummy_key")
 
 # Configures the mailer

@@ -4,6 +4,9 @@ defmodule DropletStoreWeb.PageController do
   def index(conn, _params) do
     owner = conn.assigns[:current_user]
     stores = DropletStore.Subscriptions.get_user_stores(owner.id)
-    render(conn, "index.html", stores: stores)
+
+    conn
+    |> delete_session(:store_details)
+    |> render("index.html", stores: stores)
   end
 end

@@ -21,7 +21,9 @@ defmodule DropletStoreWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/", PageController, :index
-    resources "/stores", StoreController
+    resources "/stores", StoreController do
+      resources "/offers", OfferController, only: [:new, :create]
+    end
   end
 
   scope "/auth", DropletStoreWeb do

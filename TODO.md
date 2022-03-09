@@ -12,3 +12,5 @@
 - location data is needed in publish offer and show self offers
 - create offer endpoint
 - list offers endpoint
+
+- price in create offer should be adapted to be numeric, with correct unit / currency

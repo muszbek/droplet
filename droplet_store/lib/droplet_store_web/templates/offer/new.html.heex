@@ -1,0 +1,6 @@
+<h1>Create New Offer</h1>
+
+<%= render "form.html", Map.put(assigns, :action,
+    Routes.store_offer_path(@conn, :create, @store_id)) %>
+
+<span><%= link "Back", to: Routes.store_path(@conn, :show, @store_id) %></span>

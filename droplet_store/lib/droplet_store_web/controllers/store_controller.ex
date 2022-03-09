@@ -74,8 +74,22 @@ defmodule DropletStoreWeb.StoreController do
     %{formatted_address: store_data["formatted_address"],
       formatted_phone_number: store_data["formatted_phone_number"],
       location: store_data["geometry"]["location"],
+      country: get_country_code(store_data),
       icon: store_data["icon"],
       name: store_data["name"],
       opening_hours: store_data["opening_hours"]}
+  end
+
+  defp get_country_code(%{"address_components" => components} = _store_data) do
+    do_get_country_code(components)
+  end
+
+  defp do_get_country_code([]), do: "unknown_country"
+  defp do_get_country_code([%{"short_name" => short_name, "types" => types} | rest]) do
+    if Enum.member?(types, "country") do
+      short_name
+    else
+      do_get_country_code(rest)
+    end
   end
 end

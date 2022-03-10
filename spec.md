@@ -157,4 +157,4 @@ long term: the to-go platform to find items during shortages
 
 ## Kafka
 topic layout:
-*stores/v1/offers/{id}/{publish|delete}/fr/lat&long*
+*stores/v1/offers/fr/lat&long*

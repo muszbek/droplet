@@ -11,6 +11,7 @@ config :droplet_store, DropletStore.Repo,
 
 # Configure Kafka
 config :droplet_store, DropletStore.KafkaLib,
+  impl: :brod,
   hosts: [{"localhost", 9092}]
 
 config :droplet_store, DropletStore.MapsLib,

@@ -3,6 +3,7 @@ defmodule DropletStoreWeb.StoreController do
 
   alias DropletStore.Subscriptions
   alias DropletStore.Subscriptions.Store
+  alias DropletStore.MapsLib
 
   def index(conn, _params) do
     stores = Subscriptions.list_stores()
@@ -33,7 +34,7 @@ defmodule DropletStoreWeb.StoreController do
 
   def show(conn, %{"id" => id}) do
     store = Subscriptions.get_store!(id)
-    {:ok, %{"result" => store_from_google}} = GoogleMaps.place_details(store.google_id)
+    {:ok, %{"result" => store_from_google}} = MapsLib.place_details(store.google_id)
     
     conn
     |> put_session(:store_details, compress_store_details(store_from_google))

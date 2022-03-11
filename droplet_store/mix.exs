@@ -20,7 +20,7 @@ defmodule DropletStore.MixProject do
   def application do
     [
       mod: {DropletStore.Application, []},
-      extra_applications: [:logger, :runtime_tools, :google_maps]
+      extra_applications: [:logger, :runtime_tools, :google_maps, :brod]
     ]
   end
 
@@ -54,7 +54,7 @@ defmodule DropletStore.MixProject do
       {:ueberauth, "~> 0.6"},
       {:ueberauth_google, "~> 0.10"},
       {:google_maps, "~> 0.11"},
-      {:kafka_ex, "~> 0.11"}
+      {:brod, "~> 3.16"}
     ]
   end
 

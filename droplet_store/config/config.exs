@@ -27,12 +27,6 @@ config :ueberauth, Ueberauth.Strategy.Google.OAuth,
   client_id: System.get_env("GOOGLE_CLIENT_ID", "dummy_id"),
   client_secret: System.get_env("GOOGLE_CLIENT_SECRET", "dummy_secret")
 
-# Configures Kafka
-config :kafka_ex,
-  brokers: [
-    {"localhost", 9092}
-  ]
-
 # Configures Google Maps API
 config :google_maps,
   api_key: System.get_env("GOOGLE_API_KEY", "dummy_key")

@@ -72,6 +72,12 @@ defmodule DropletStoreWeb.StoreController do
 
   def delete(conn, %{"id" => id}) do
     store = Subscriptions.get_store!(id)
+
+    store.google_id
+    |> MapsLib.place_details()
+    |> compress_store_details()
+    |> KafkaLib.delete_topic()
+	
     {:ok, _store} = Subscriptions.delete_store(store)
 
     conn

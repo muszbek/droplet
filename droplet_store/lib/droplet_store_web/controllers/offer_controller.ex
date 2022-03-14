@@ -11,7 +11,7 @@ defmodule DropletStoreWeb.OfferController do
   def create(conn, %{"store_id" => store_id} = params) do
     topic = conn
     |> get_session(:store_details)
-    |> Offers.create_topic()
+    |> Offers.create_topic_name()
 
     payload = params
     |> Offers.create_payload()

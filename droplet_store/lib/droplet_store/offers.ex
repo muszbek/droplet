@@ -14,16 +14,16 @@ defmodule DropletStore.Offers do
     |> Jason.encode!()
   end
 
-  def create_topic(store_details) do
+  def create_topic_name(store_details) do
     country = store_details.country
     loc = create_location(store_details.location)
-    "stores/" <> @api_version <> "/offers/" <> country <> "/" <> loc
+    "stores_" <> @api_version <> "_offers_" <> country <> "_" <> loc
   end
 
   defp create_location(loc) do
     lat = loc["lat"] |> :erlang.float_to_binary(decimals: 7)
     lng = loc["lng"] |> :erlang.float_to_binary(decimals: 7)
-    lat <> "&" <> lng
+    lat <> "-" <> lng
   end
   
 end

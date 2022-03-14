@@ -11,19 +11,27 @@ defmodule DropletStore.KafkaLib do
   end
 
   def create_topic(store_details) do
-    topic = Offers.create_topic(store_details)
+    topic = Offers.create_topic_name(store_details)
 
     topic_config = [
       %{
-	config_entries: [],
+	configs: [],
 	num_partitions: @num_partitions,
-	replica_assignment: [],
+	assignments: [],
 	replication_factor: @replication_factor,
-	topic: topic
+	name: topic
       }
     ]
 
     :ok = get_impl().create_topics(hosts(), topic_config, %{timeout: 1_000})
+  end
+
+  def delete_topic(store_details) do
+    topic = Offers.create_topic_name(store_details)
+    case get_impl().delete_topics(hosts(), [topic], 1_000) do
+      :ok -> :ok
+      {:error, :unknown_topic_or_partition} -> :ok
+    end
   end
 
   def get_metadata() do

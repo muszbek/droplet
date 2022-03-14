@@ -4,6 +4,7 @@ defmodule DropletStoreWeb.StoreController do
   alias DropletStore.Subscriptions
   alias DropletStore.Subscriptions.Store
   alias DropletStore.MapsLib
+  alias DropletStore.KafkaLib
 
   def index(conn, _params) do
     stores = Subscriptions.list_stores()
@@ -23,6 +24,11 @@ defmodule DropletStoreWeb.StoreController do
     
     case Subscriptions.create_store_with_owner(store_params, owner) do
       {:ok, store} ->
+	store.google_id
+	|> MapsLib.place_details()
+	|> compress_store_details()
+	|> KafkaLib.create_topic()
+	
         conn
         |> put_flash(:info, "Store created successfully.")
         |> redirect(to: Routes.store_path(conn, :show, store))
@@ -34,10 +40,13 @@ defmodule DropletStoreWeb.StoreController do
 
   def show(conn, %{"id" => id}) do
     store = Subscriptions.get_store!(id)
-    {:ok, %{"result" => store_from_google}} = MapsLib.place_details(store.google_id)
+    
+    store_details = store.google_id
+    |> MapsLib.place_details()
+    |> compress_store_details()
     
     conn
-    |> put_session(:store_details, compress_store_details(store_from_google))
+    |> put_session(:store_details, store_details)
     |> render("show.html", store: store)
   end
 

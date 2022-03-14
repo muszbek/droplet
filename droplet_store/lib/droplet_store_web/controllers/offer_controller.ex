@@ -2,6 +2,7 @@ defmodule DropletStoreWeb.OfferController do
   use DropletStoreWeb, :controller
 
   alias DropletStore.Offers
+  alias DropletStore.KafkaLib
   
   def new(conn, %{"store_id" => store_id}) do
     render(conn, "new.html", store_id: store_id)
@@ -15,7 +16,7 @@ defmodule DropletStoreWeb.OfferController do
     payload = params
     |> Offers.create_payload()
 
-    :ok = :brod.start_producer(:kafka_client, topic, _prod_config = [])
+    #:ok = :brod.start_producer(:kafka_client, topic, _prod_config = [])
     
     conn
     |> put_flash(:info, "Offer created successfully.")

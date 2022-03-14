@@ -1,7 +1,8 @@
 defmodule DropletStore.MapsLib do
-
+  
   def place_details(google_id) do
-    get_impl().place_details(google_id)
+    {:ok, %{"result" => store_from_google}} = get_impl().place_details(google_id)
+    store_from_google
   end
   
   defp get_impl() do

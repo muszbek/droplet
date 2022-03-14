@@ -8,7 +8,8 @@ defmodule DropletStore.Offers do
       type: "publish",
       title: params["title"],
       description: params["description"],
-      price: params["price"]
+      price: params["price"],
+      timestamp: DateTime.utc_now() |> to_string()
     }
     |> Jason.encode!()
   end

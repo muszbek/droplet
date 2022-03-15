@@ -37,8 +37,12 @@ defmodule DropletStore.KafkaLib do
     end
   end
 
-  def start_producer(topic) do
+  def start_producer(topic) when is_binary(topic) do
     :ok = get_impl().start_producer(@client_name, topic, _producer_config = [])
+  end
+  def start_producer(store_details) do
+    topic = Offers.create_topic_name(store_details)
+    start_producer(topic)
   end
   
   def produce(topic, key, payload) do

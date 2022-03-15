@@ -5,7 +5,6 @@ defmodule DropletStoreWeb.StoreController do
   alias DropletStore.Subscriptions.Store
   alias DropletStore.MapsLib
   alias DropletStore.KafkaLib
-  require Logger
 
   def index(conn, _params) do
     stores = Subscriptions.list_stores()
@@ -46,16 +45,7 @@ defmodule DropletStoreWeb.StoreController do
     |> MapsLib.place_details()
     |> compress_store_details()
 
-    topic = store_details
-    |> KafkaLib.create_topic()
-
-    topic
-    |> KafkaLib.get_metadata()
-    |> inspect(pretty: true)
-    |> Logger.warn()
-    
-    topic
-    |> KafkaLib.start_producer()
+    KafkaLib.start_producer(store_details)
     
     conn
     |> put_session(:store_details, store_details)

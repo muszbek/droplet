@@ -3,8 +3,9 @@ defmodule DropletStore.Offers do
   @api_version "v1"
   
   def create_payload(params) do
-    %{
-      uid: Ecto.UUID.generate(),
+    key = Ecto.UUID.generate()
+    payload = %{
+      uid: key,
       type: "publish",
       title: params["title"],
       description: params["description"],
@@ -12,6 +13,8 @@ defmodule DropletStore.Offers do
       timestamp: DateTime.utc_now() |> to_string()
     }
     |> Jason.encode!()
+
+    {key, payload}
   end
 
   def create_topic_name(store_details) do

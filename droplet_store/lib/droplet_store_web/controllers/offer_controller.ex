@@ -13,10 +13,9 @@ defmodule DropletStoreWeb.OfferController do
     |> get_session(:store_details)
     |> Offers.create_topic_name()
 
-    payload = params
-    |> Offers.create_payload()
+    {key, payload} = Offers.create_payload(params)
 
-    #:ok = :brod.start_producer(:kafka_client, topic, _prod_config = [])
+    KafkaLib.produce(topic, key, payload)
     
     conn
     |> put_flash(:info, "Offer created successfully.")

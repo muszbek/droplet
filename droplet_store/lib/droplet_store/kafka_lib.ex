@@ -23,7 +23,10 @@ defmodule DropletStore.KafkaLib do
       }
     ]
 
-    :ok = get_impl().create_topics(hosts(), topic_config, %{timeout: 1_000})
+    case get_impl().create_topics(hosts(), topic_config, %{timeout: 1_000}) do
+      :ok -> :ok
+      {:error, :topic_already_exists} -> :ok
+    end
   end
 
   def delete_topic(store_details) do
@@ -34,6 +37,14 @@ defmodule DropletStore.KafkaLib do
     end
   end
 
+  def start_producer(topic) do
+    :ok = get_impl().start_producer(@client_name, topic, _producer_config = [])
+  end
+  
+  def produce(topic, key, payload) do
+    :ok = get_impl().produce_sync(@client_name, topic, :hash, key, payload)
+  end
+  
   def get_metadata() do
     :brod.get_metadata(hosts())
   end

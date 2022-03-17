@@ -14,6 +14,14 @@ config :droplet_store, DropletStore.KafkaLib,
   impl: :brod,
   hosts: [{"localhost", 9092}]
 
+config :brod,
+  clients: [
+    kafka_client: [
+      endpoints: [localhost: 9092],
+      auto_start_producers: true
+    ]
+  ]
+
 config :droplet_store, DropletStore.MapsLib,
   impl: GoogleMaps
 

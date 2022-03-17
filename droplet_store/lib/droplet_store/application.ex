@@ -19,8 +19,6 @@ defmodule DropletStore.Application do
       # Start a worker by calling: DropletStore.Worker.start_link(arg)
       # {DropletStore.Worker, arg}
     ]
-
-    DropletStore.KafkaLib.start_client()
     
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

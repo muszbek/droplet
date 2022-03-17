@@ -20,13 +20,13 @@
       <td><%= offer.currency %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.offer_path(@conn, :show, offer) %></span>
-        <span><%= link "Edit", to: Routes.offer_path(@conn, :edit, offer) %></span>
-        <span><%= link "Delete", to: Routes.offer_path(@conn, :delete, offer), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Show", to: Routes.store_offer_path(@conn, :show, @store_id, offer) %></span>
+        <span><%= link "Edit", to: Routes.store_offer_path(@conn, :edit, @store_id, offer) %></span>
+        <span><%= link "Delete", to: Routes.store_offer_path(@conn, :delete, @store_id, offer), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Offer", to: Routes.offer_path(@conn, :new) %></span>
+<span><%= link "New Offer", to: Routes.store_offer_path(@conn, :new, @store_id) %></span>

@@ -8,7 +8,8 @@ defmodule DropletStore.Subscriptions.Store do
 
     many_to_many :users, DropletStore.Accounts.User,
       join_through: DropletStore.Subscriptions.UserStore
-
+    has_many :offers, DropletStore.Publishments.Offer
+    
     timestamps()
   end
 

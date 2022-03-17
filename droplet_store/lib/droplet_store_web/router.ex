@@ -22,7 +22,7 @@ defmodule DropletStoreWeb.Router do
 
     get "/", PageController, :index
     resources "/stores", StoreController do
-      resources "/offers", OfferController, only: [:new, :create]
+      resources "/offers", OfferController
     end
   end
 

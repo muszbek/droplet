@@ -1,0 +1,28 @@
+<h1>Show Offer</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @offer.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @offer.description %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @offer.price %>
+  </li>
+
+  <li>
+    <strong>Currency:</strong>
+    <%= @offer.currency %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.offer_path(@conn, :edit, @offer) %></span> |
+<span><%= link "Back", to: Routes.offer_path(@conn, :index) %></span>

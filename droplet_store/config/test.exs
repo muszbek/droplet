@@ -16,10 +16,6 @@ config :droplet_store, DropletStore.Repo,
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
-# Configure Kafka
-config :droplet_store, DropletStore.KafkaLib,
-  impl: DropletStore.BrodMock
-
 config :droplet_store, DropletStore.MapsLib,
   impl: DropletStore.GoogleMapsMock
 

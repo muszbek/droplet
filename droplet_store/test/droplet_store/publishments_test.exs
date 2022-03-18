@@ -22,9 +22,9 @@ defmodule DropletStore.PublishmentsTest do
 
     test "create_offer/1 with valid data creates a offer" do
       store = DropletStore.SubscriptionsFixtures.store_fixture()
-      valid_attrs = %{currency: "EUR", description: "some description", price: "120.5", title: "some title", store_id: store.id}
+      valid_attrs = %{currency: "EUR", description: "some description", price: "120.5", title: "some title"}
 
-      assert {:ok, %Offer{} = offer} = Publishments.create_offer(valid_attrs)
+      assert {:ok, %Offer{} = offer} = Publishments.create_offer(store.id, valid_attrs)
       assert offer.currency == "EUR"
       assert offer.description == "some description"
       assert offer.price == Decimal.new("120.5")
@@ -32,7 +32,7 @@ defmodule DropletStore.PublishmentsTest do
     end
 
     test "create_offer/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Publishments.create_offer(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Publishments.create_offer(-1, @invalid_attrs)
     end
 
     test "update_offer/2 with valid data updates the offer" do

@@ -50,6 +50,7 @@ defmodule DropletStore.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
+      {:morphix, "~> 0.8.1"},
       {:oauth2, "~> 2.0", override: true},
       {:ueberauth, "~> 0.6"},
       {:ueberauth_google, "~> 0.10"},

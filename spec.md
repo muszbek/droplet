@@ -158,3 +158,5 @@ long term: the to-go platform to find items during shortages
 ## Kafka
 topic layout:
 *stores/v1/offers/fr/lat&long*
+
+** Kafka is abandoned, it's not the right tool because I cannot recover past events in the client, a regular database does it and I don't really need real time processing **

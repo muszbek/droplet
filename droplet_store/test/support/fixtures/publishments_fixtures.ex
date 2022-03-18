@@ -10,17 +10,14 @@ defmodule DropletStore.PublishmentsFixtures do
   def offer_fixture(attrs \\ %{}) do
     store = DropletStore.SubscriptionsFixtures.store_fixture()
     
-    {:ok, offer} =
-      attrs
-      |> Enum.into(%{
-        currency: "EUR",
-        description: "some description",
-        price: "120.50",
-        title: "some title",
-	store_id: store.id
-      })
-      |> DropletStore.Publishments.create_offer()
-
+    new_attrs = Enum.into(attrs, %{
+          currency: "EUR",
+          description: "some description",
+          price: "120.50",
+          title: "some title"
+			  })
+    
+    {:ok, offer} = DropletStore.Publishments.create_offer(store.id, new_attrs)
     offer
   end
 end

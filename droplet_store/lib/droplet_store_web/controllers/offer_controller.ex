@@ -15,7 +15,7 @@ defmodule DropletStoreWeb.OfferController do
   end
 
   def create(conn, %{"store_id" => store_id, "offer" => offer_params}) do
-    case Publishments.create_offer(offer_params) do
+    case Publishments.create_offer(store_id, offer_params) do
       {:ok, offer} ->
         conn
         |> put_flash(:info, "Offer created successfully.")

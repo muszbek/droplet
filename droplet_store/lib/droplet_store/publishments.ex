@@ -49,9 +49,13 @@ defmodule DropletStore.Publishments do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_offer(attrs \\ %{}) do
+  def create_offer(store_id, attrs \\ %{}) do
+    attrs_with_store_id = attrs
+    |> Map.put(:store_id, store_id)
+    |> Morphix.atomorphify!()
+    
     %Offer{}
-    |> Offer.changeset(attrs)
+    |> Offer.changeset(attrs_with_store_id)
     |> Repo.insert()
   end
 

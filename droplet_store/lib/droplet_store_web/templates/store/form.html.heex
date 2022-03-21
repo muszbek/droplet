@@ -6,6 +6,9 @@
   <%= text_input f, :google_id, placeholder: "Google Maps place ID", readonly: true %>
   <%= error_tag f, :google_id %>
 
+  <%= hidden_input f, :lat, value: "0.0" %>
+  <%= hidden_input f, :lng, value: "0.0" %>
+
   <div id="map"></div>
   
   <div>

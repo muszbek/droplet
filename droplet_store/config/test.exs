@@ -9,7 +9,7 @@ config :bcrypt_elixir, :log_rounds, 1
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :droplet_store, DropletStore.Repo,
-  username: "droplet",
+  username: "postgres",
   password: "droplet",
   hostname: "localhost",
   database: "droplet_test#{System.get_env("MIX_TEST_PARTITION")}",

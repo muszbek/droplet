@@ -8,7 +8,7 @@ defmodule DropletStore.SubscriptionsTest do
 
     import DropletStore.SubscriptionsFixtures
 
-    @invalid_attrs %{address: nil, google_id: nil}
+    @invalid_attrs %{address: nil, google_id: nil, lat: "0.0", lng: "0.0"}
 
     test "list_stores/0 returns all stores" do
       store = store_fixture()
@@ -27,7 +27,7 @@ defmodule DropletStore.SubscriptionsTest do
     end
 
     test "create_store/1 with valid data creates a store" do
-      valid_attrs = %{address: "some address", google_id: "some google_id"}
+      valid_attrs = %{address: "some address", google_id: "some google_id", lat: "10.0", lng: "-10.0"}
 
       assert {:ok, %Store{} = store} = Subscriptions.create_store(valid_attrs)
       assert store.address == "some address"
@@ -39,7 +39,7 @@ defmodule DropletStore.SubscriptionsTest do
     end
 
     test "create_store_with_owner/2 with valid data creates a store" do
-      valid_attrs = %{address: "some address", google_id: "some google_id"}
+      valid_attrs = %{address: "some address", google_id: "some google_id", lat: "10.0", lng: "-10.0"}
       owner = DropletStore.AccountsFixtures.user_fixture()
 
       assert {:ok, %Store{} = store} = Subscriptions.create_store_with_owner(valid_attrs, owner)
@@ -55,7 +55,7 @@ defmodule DropletStore.SubscriptionsTest do
     end
 
     test "create_store_with_owner/2 with invalid owner throws error" do
-      valid_attrs = %{address: "some address", google_id: "some google_id"}
+      valid_attrs = %{address: "some address", google_id: "some google_id", lat: "10.0", lng: "-10.0"}
       catch_error Subscriptions.create_store_with_owner(valid_attrs, :invalid_owner)
     end
 

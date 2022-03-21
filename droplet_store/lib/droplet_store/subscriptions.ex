@@ -67,8 +67,16 @@ defmodule DropletStore.Subscriptions do
 
   """
   def create_store(attrs \\ %{}) do
+    attrs = Morphix.atomorphify!(attrs)
+    
+    lat = String.to_float(attrs.lat)
+    lng = String.to_float(attrs.lng)
+    loc = %Geo.Point{coordinates: {lat, lng}}
+    
+    attrs_with_loc = Map.put(attrs, :location, loc)
+    
     %Store{}
-    |> Store.changeset(attrs)
+    |> Store.changeset(attrs_with_loc)
     |> Repo.insert()
   end
 

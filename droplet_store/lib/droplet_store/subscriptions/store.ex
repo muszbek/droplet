@@ -18,6 +18,6 @@ defmodule DropletStore.Subscriptions.Store do
   def changeset(store, attrs) do
     store
     |> cast(attrs, [:address, :google_id, :location])
-    |> validate_required([:address, :google_id])
+    |> validate_required([:address, :google_id, :location])
   end
 end

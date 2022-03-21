@@ -28,6 +28,8 @@ defmodule DropletStore.SubscriptionsFixtures do
   defp create_attrs(attrs) do
     attrs
     |> Enum.into(%{address: "some address",
-		   google_id: "some google_id"})
+		   google_id: "some google_id",
+		   lat: "10.0",
+		   lng: "-10.0"})
   end
 end

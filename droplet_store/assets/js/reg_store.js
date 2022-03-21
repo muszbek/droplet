@@ -55,5 +55,7 @@ function initSearch(map) {
 	map.setZoom(foundZoom);
 
 	document.getElementById("store_google_id").value = place.place_id;
+	document.getElementById("store_lat").value = pos.lat();
+	document.getElementById("store_lng").value = pos.lng();
     });
 }

@@ -3,9 +3,9 @@ defmodule DropletStoreWeb.StoreControllerTest do
 
   import DropletStore.SubscriptionsFixtures
 
-  @create_attrs %{address: "some address", google_id: "some google_id"}
+  @create_attrs %{address: "some address", google_id: "some google_id", lat: "10.0", lng: "-10.0"}
   @update_attrs %{address: "some updated address", google_id: "some updated google_id"}
-  @invalid_attrs %{address: nil, google_id: nil}
+  @invalid_attrs %{address: nil, google_id: nil, lat: "0.0", lng: "0.0"}
 
   setup :register_and_log_in_user
   

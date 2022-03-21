@@ -2,7 +2,7 @@ import Config
 
 # Configure your database
 config :droplet_store, DropletStore.Repo,
-  username: System.get_env("POSTGRESQL_USERNAME", "droplet"),
+  username: System.get_env("POSTGRESQL_USERNAME", "postgres"),
   password: System.get_env("POSTGRESQL_PASSWORD", "droplet"),
   hostname: System.get_env("POSTGRESQL_HOST", "localhost"),
   database: System.get_env("POSTGRESQL_DATABASE", "droplet"),

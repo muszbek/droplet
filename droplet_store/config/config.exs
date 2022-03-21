@@ -10,6 +10,9 @@ import Config
 config :droplet_store,
   ecto_repos: [DropletStore.Repo]
 
+config :droplet_store, DropletStore.Repo,
+  types: DropletStore.PostgresTypes
+
 # Configures the endpoint
 config :droplet_store, DropletStoreWeb.Endpoint,
   url: [host: "localhost"],

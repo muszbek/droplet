@@ -54,7 +54,9 @@ defmodule DropletStore.MixProject do
       {:oauth2, "~> 2.0", override: true},
       {:ueberauth, "~> 0.6"},
       {:ueberauth_google, "~> 0.10"},
-      {:google_maps, "~> 0.11"}
+      {:google_maps, "~> 0.11"},
+      {:geo, "~> 3.4"},
+      {:geo_postgis, "~> 3.4"}
     ]
   end
 

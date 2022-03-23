@@ -9,9 +9,6 @@ config :droplet_store, DropletStore.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
-config :droplet_store, DropletStore.MapsLib,
-  impl: GoogleMaps
-
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

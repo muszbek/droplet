@@ -34,6 +34,9 @@ config :ueberauth, Ueberauth.Strategy.Google.OAuth,
 config :google_maps,
   api_key: System.get_env("GOOGLE_API_KEY", "dummy_key")
 
+config :droplet_store, DropletStore.MapsLib,
+  impl: GoogleMaps
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

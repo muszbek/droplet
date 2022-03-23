@@ -13,6 +13,31 @@ services:
     env_file:
       - ./postgres/postgres.env
 
+  phx-server:
+    container_name: phx-server
+    image: phx_server:v0.1
+    hostname: phx-server
+    build:
+      context: ./droplet_store
+    ports:
+      - "80:4000"
+      - "443:4001"
+    networks:
+      - droplet_network
+    depends_on:
+      - postgres
+    volumes:
+      - ./droplet_store/lib:/opt/app/lib
+      - ./droplet_store/assets:/opt/app/assets
+    environment:
+      - MIX_ENV=prod
+      - DOMAIN=$DOMAIN
+    env_file:
+      - ./postgres/postgres.env
+      - ./oauth2/google.secret
+      - ./google_maps/api_key.secret
+      
+
 networks:
   droplet_network:
     
